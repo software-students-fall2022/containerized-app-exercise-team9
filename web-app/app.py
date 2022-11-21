@@ -4,9 +4,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-
 MONGO = os.getenv('MONGO_REMOTE')
-print(MONGO)
 client = MongoClient(MONGO)
 
 app = Flask(__name__)
