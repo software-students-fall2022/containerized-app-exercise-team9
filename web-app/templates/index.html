@@ -16,27 +16,33 @@
             <p class="fst-normal"> {{result["screen_text"]}}</p>
         </div> 
         <div class="row text-center p-2">
-            <div class="col"> <p class="fw-bold"> Time taken </p> </div>
+            <div class="col"> <p class="fw-bold"> Time taken </p> 
+            <p class="small"> <i> The total amount of time taken to complete reading the text out loud. </i>  </p></div>
             <div class="col"> <p class="fst-normal"> {{result["time_taken"]}} seconds</p> </div>
         </div> 
         <div class="row text-center p-2">
-            <div class="col"> <p class="fw-bold"> Accuracy </p> </div>
+            <div class="col"> <p class="fw-bold"> Accuracy </p> 
+            <p class="small"> <i> The fraction of the text that was read (or said) correctly. </i>  </p></div>
             <div class="col"> <p class="fst-normal"> {{result["accuracy"]}} </p> </div>
         </div> 
         <div class="row text-center p-2">
-            <div class="col"> <p class="fw-bold"> # of total words spoken </p> </div>
+            <div class="col"> <p class="fw-bold"> # of total words spoken </p> 
+            <p class="small"> <i> The total number of words read (or said).  </i>  </p></div>
             <div class="col"> <p class="fst-normal"> {{result["words_spoken"]}} </p> </div>
         </div> 
         <div class="row text-center p-2">
-            <div class="col"> <p class="fw-bold"> # of correct words spoken </p> </div>
+            <div class="col"> <p class="fw-bold"> # of correct words spoken </p> 
+                <p class="small"> <i> The number of correct words read (or said).  </i>  </p></div>
             <div class="col"> <p class="fst-normal">  {{result["correct_words_spoken"]}} </p> </div>
         </div> 
         <div class="row text-center p-2">
-            <div class="col"> <p class="fw-bold"> Words per second </p> </div>
+            <div class="col"> <p class="fw-bold"> Words per second </p> 
+                <p class="small"> <i> Average number of words said (or read) per second.  </i>  </p></div>
             <div class="col"> <p class="fst-normal"> {{result["total_words_per_second"]}} </p> </div>
         </div> 
         <div class="row text-center p-2">
-            <div class="col"> <p class="fw-bold"> Correct words per second </p> </div>
+            <div class="col"> <p class="fw-bold"> Correct words per second </p> 
+                <p class="small"> <i> Average number of correct words said (or read) per second.  </i>  </p></div>
             <div class="col"> <p class="fst-normal"> {{result["correct_words_per_second"]}} </p> </div>
         </div> 
     
