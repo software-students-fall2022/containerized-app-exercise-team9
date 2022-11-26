@@ -10,14 +10,12 @@ client = MongoClient(MONGO)
 
 app = Flask(__name__)
 db = client["textToSpeech"]
-# relevant collection name = outputs
 
 @app.route("/") 
 def results_home(): 
-  # connect to collection 
-  # search for user in connection based on name entered
-  # display most recent results 
- return render_template("index.html")
+  ## not the right way to find the last result, just a test
+  result = db.results.find_one({"screen_text": "This is a test"})
+  return render_template("index.html", result=result)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=5000)

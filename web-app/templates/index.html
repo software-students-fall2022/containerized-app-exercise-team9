@@ -13,27 +13,31 @@
         <h1> Transcriber Results </h1>
         <div class="row text-center p-3">
             <p class = "fw-bold"> The text you transcribed: </p> 
-            <p class="fst-normal"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                 Quisque sagittis purus sit amet volutpat consequat.
-                  Ut ornare lectus sit amet est placerat in. 
-                  Varius vel pharetra vel turpis nunc eget lorem dolor sed. 
-                  Felis eget nunc lobortis mattis aliquam faucibus. </p>
+            <p class="fst-normal"> {{result["screen_text"]}}</p>
         </div> 
         <div class="row text-center p-2">
-            <div class="col"> <p class="fw-bold"> Statstic </p> </div>
-            <div class="col"> <p class="fst-normal"> Result </p> </div>
+            <div class="col"> <p class="fw-bold"> Time taken </p> </div>
+            <div class="col"> <p class="fst-normal"> {{result["time_taken"]}} seconds</p> </div>
         </div> 
         <div class="row text-center p-2">
-            <div class="col"> <p class="fw-bold"> Statstic </p> </div>
-            <div class="col"> <p class="fst-normal"> Result </p> </div>
+            <div class="col"> <p class="fw-bold"> Accuracy </p> </div>
+            <div class="col"> <p class="fst-normal"> {{result["accuracy"]}} </p> </div>
         </div> 
         <div class="row text-center p-2">
-            <div class="col"> <p class="fw-bold"> Statstic </p> </div>
-            <div class="col"> <p class="fst-normal"> Result </p> </div>
+            <div class="col"> <p class="fw-bold"> # of total words spoken </p> </div>
+            <div class="col"> <p class="fst-normal"> {{result["words_spoken"]}} </p> </div>
         </div> 
         <div class="row text-center p-2">
-            <div class="col"> <p class="fw-bold"> Statstic </p> </div>
-            <div class="col"> <p class="fst-normal"> Result </p> </div>
+            <div class="col"> <p class="fw-bold"> # of correct words spoken </p> </div>
+            <div class="col"> <p class="fst-normal">  {{result["correct_words_spoken"]}} </p> </div>
+        </div> 
+        <div class="row text-center p-2">
+            <div class="col"> <p class="fw-bold"> Words per second </p> </div>
+            <div class="col"> <p class="fst-normal"> {{result["total_words_per_second"]}} </p> </div>
+        </div> 
+        <div class="row text-center p-2">
+            <div class="col"> <p class="fw-bold"> Correct words per second </p> </div>
+            <div class="col"> <p class="fst-normal"> {{result["correct_words_per_second"]}} </p> </div>
         </div> 
     
         <div class="row mx-auto">
