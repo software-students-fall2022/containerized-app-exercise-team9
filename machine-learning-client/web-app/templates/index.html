@@ -11,9 +11,13 @@
 </head>
 <body>
   <div class="container">
-    <h1>Online transcriber</h1>
+    <div class="container d-flex justify-content-center">
+      <h1>Online transcriber</h1>
+    </div>
+    <div class="container d-flex justify-content-center">
+      <button id="startRecording" type="button" class="btn btn-primary m-1" href="{{ url_for('record')}}">Start now</button>
+      <button id="stopRecording" type="button" class="btn btn-primary m-1" href="/results.html">See previous transcriptions</button>
+    </div> 
   </div>
-  <button id="startRecording" type="button" class="btn btn-primary">Start now</button>
-  <button id="stopRecording" type="button" class="btn btn-primary">See previous transcriptions</button>
 </body>
 </html>
