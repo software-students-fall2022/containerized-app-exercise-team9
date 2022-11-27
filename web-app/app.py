@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
 from pymongo import MongoClient
 from dotenv import load_dotenv
+from bson import ObjectId
+
 import os
 
 load_dotenv()
@@ -42,6 +44,15 @@ def display_all():
 
 
   return render_template("all.html", documents = db.results.find({}), data = data, size = db.results.count_documents({}))
+
+@app.route("/view/<id>")
+def view_details(id):
+  findId = ObjectId(id)
+  info = db.results.find_one({"_id": findId})
+  print(info)
+  return render_template("result.html", result=info)
+
+
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=5000)
