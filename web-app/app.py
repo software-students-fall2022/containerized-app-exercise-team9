@@ -14,8 +14,9 @@ db = client["textToSpeech"]
 @app.route("/") 
 def results_home(): 
   ## not the right way to find the last result, just a test
-  result = db.results.find_one({"screen_text": "This is a test"})
-  return render_template("result.html", result=result)
+  result = db.results.find({}).sort("_id",-1).limit(1)
+  print(result[0])
+  return render_template("result.html", result=result[0])
 
 
 @app.route("/all")
