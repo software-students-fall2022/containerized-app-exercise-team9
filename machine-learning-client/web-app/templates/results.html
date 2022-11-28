@@ -11,12 +11,16 @@
 <body>
   <div class="container">
     <h1>Previous transcriptions</h1>
-
+    {% for docs in docs %} 
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Transcription #</h4>
-        <small class="card-text"><i>Date</i></small>
-        <p class="card-tesxt">Transcription here</p>
+        <h4 class="card-title">Recording by <b>{{ doc.name }}</b></h4>
+        <small class="card-text"><i>Date <b> {{ doc.created_at.strftime("%H:%M on %d %B %Y") }}</b></i></small>
+        <p class="card-text">{{ doc.text }}</p>
+        <audio controls>
+          <source src="{{ url_for('static', filename='audio/' + doc.filename) }}" type="audio/wav">
+        </audio>
+        <p>Transcription: <b>{{ doc.transcription }}</b></p>
       </div>
     </div>    
   </div>
