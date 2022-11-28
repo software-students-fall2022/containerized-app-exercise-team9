@@ -2,7 +2,7 @@ name: Machine Learning Client Build & Test
 on: [push]
 jobs:
   runs-on: ubuntu-latest
-  timeout-minutes: 5
+  timeout-minutes: 50
   strategy:
   matrix:
     python-version: ["3.7","3.8", "3.9","3.11"]
