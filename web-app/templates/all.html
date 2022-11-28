@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <title> Past Results </title>
+</head>
+<body>
+
+    <div class="container p-5">
+        <h1> Past Transcriber Results </h1>
+        <div class="row text-center text-white p-3 border border-2 rounded bg-primary" style="margin-bottom: 10px;"> 
+            <h3> Average Stats </h3>
+            <p class="medium"> <i> Average stats for all past transcriptions (of all users). </i>  </p>
+            <div class="row text-center p-1 border-bottom border-2  mx-auto">
+                <div class="col"> <b> Number of completed transcriptions </b> </div>
+                <div class="col"> {{size}} transcriptions </div>
+            </div>
+            <div class="row text-center p-1 border-bottom border-2  mx-auto">
+                <div class="col"> <b> Time taken </b> </div>
+                <div class="col"> {{data["avg_time_taken"]}} seconds  </div>
+            </div>
+            <div class="row text-center p-1 border-bottom border-2  mx-auto">
+                <div class="col"> <b> Accuracy </b> </div>
+                <div class="col"> {{data["avg_accuracy"]}} out of 1 </div>
+            </div>
+            <div class="row text-center p-1 border-bottom border-2  mx-auto">
+                <div class="col"> <b> Total words spoken </b>  </div>
+                <div class="col">  {{data["avg_words_spoken"]}} words  </div>
+            </div>
+            <div class="row text-center p-1 border-bottom border-2  mx-auto">
+                <div class="col"> <b> Correct words spoken </b>  </div>
+                <div class="col">  {{data["avg_correct_spoken"]}} words </div>
+            </div>
+            <div class="row text-center p-1 border-bottom border-2  mx-auto">
+                <div class="col"> <b> Total words spoken per second </b>  </div>
+                <div class="col">  {{data["avg_total_wps"]}} words per second </div>
+            </div>
+            <div class="row text-center p-1 mx-auto">
+                <div class="col"> <b> Correct words spoken per second </b>  </div>
+                <div class="col"> {{data["avg_correct_wps"]}} words per second </div>
+            </div>
+
+
+
+        </div>
+        {% for document in documents %}
+        <div class="card" style="width: 40%; display: inline-block;">
+            <div class="card-body">
+                <h5 class="card-title">  Result </h5>
+                <p> Completed {{document["time_created"]}}<p>
+                <p class="small"> 
+                    Accuracy: {{document["accuracy"]}} out of 1
+                    <br>
+                    Time: {{document["time_taken"]}} seconds 
+                    <br>
+                    Total words per second: {{document["total_words_per_second"]}}
+                </p>
+                <a href= "view/{{document._id}}" class="btn btn-outline-primary"> More details </a>
+            </div>
+        </div>
+
+
+        {% endfor %}
+
+    </div>
+</body>
