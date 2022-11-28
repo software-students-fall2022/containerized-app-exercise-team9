@@ -5,7 +5,7 @@ jobs:
   timeout-minutes: 5
   strategy:
   matrix:
-    python-version: ["3.8","3.11"]
+    python-version: ["3.7","3.8", "3.9","3.11"]
   defaults:
     run:
       working-directory: machine-learning-client
@@ -26,4 +26,4 @@ jobs:
         pip install -e .
     - name: Test with pytest
       run: |
-        pytest
+        python -m pytest machine-learning-client/tests
