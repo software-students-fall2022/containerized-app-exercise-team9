@@ -12,5 +12,3 @@ def get_random_quote():
 			print("Error " + str(response.status_code) +  " while getting quote.")
 	except:
 		print("Something went wrong.")
-
-get_random_quote()
