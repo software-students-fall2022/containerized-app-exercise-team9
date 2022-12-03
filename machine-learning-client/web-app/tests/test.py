@@ -46,14 +46,14 @@ class Tests:
         
         assert data['correct_words_per_second'] == data['correct_words_spoken'] / data['time_taken'], f"Expected correct_words_per_second to be {data['correct_words_spoken'] / data['time_taken']}, instead it was {data['correct_words_per_second']}"
         
-        assert data['accuracy'] == 1.0, f"Expected accuracy to be 1.0, instead it was {data['accuracy']}"
+        assert data['accuracy'] == 100.0, f"Expected accuracy to be 1.0, instead it was {data['accuracy']}"
 
     def test_audio_length(self):
         """
         Testing if correctly gets audio length
         """
-        _, audio_length = transcribe.transcribe("tests/test.wav")
-        assert audio_length >= 64 and audio_length <= 65, f"Error, expected audio length to be between 64 and 65, instead it was {audio_length}"
+        _, audio_length = transcribe.transcribe("tests/test_short.wav")
+        assert audio_length >= 1 and audio_length <= 1.5, f"Error, expected audio length to be between 64 and 65, instead it was {audio_length}"
 
     def test_sentence_to_word_list(self):
         """

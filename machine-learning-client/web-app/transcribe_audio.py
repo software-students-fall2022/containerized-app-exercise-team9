@@ -4,7 +4,7 @@ import numpy as np
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
 
-def generate_statistics(actual_text, wav_file):
+def generate_statistics(actual_text, wav_file, transcriber='sphinx'):
     """
     Generates statistics to upload to mongodb:
 
@@ -26,7 +26,7 @@ def generate_statistics(actual_text, wav_file):
         an object with the statistics
     """
 
-    transcribed_text, audio_length = transcribe(wav_file)
+    transcribed_text, audio_length = transcribe(wav_file, transcriber)
     transcribed_list = sentence_to_word_list(transcribed_text)
     actual_list = sentence_to_word_list(actual_text)
 
@@ -42,7 +42,7 @@ def generate_statistics(actual_text, wav_file):
     data['correct_words_spoken'] = matches
     data['total_words_per_second'] = words_spoken / audio_length
     data['correct_words_per_second'] = matches / audio_length
-    data['accuracy'] = accuracy_val
+    data['accuracy'] = accuracy_val * 100
     return data
 
 def accuracy(actual: list[str], transcribed: list[str], matches: int) -> float:
@@ -135,7 +135,7 @@ def matching_words(main, secondary):
 
     return matching, indeces
 
-def transcribe(wav_file):
+def transcribe(wav_file, transcriber='sphinx'):
     """
     Transcribes an audio file
     
@@ -145,7 +145,15 @@ def transcribe(wav_file):
         text: the transcribed file
         audio_length: the length of the audio file, in seconds
     """
+
     r = sr.Recognizer()
+    transcriber_dict = {
+        'google': r.recognize_google,
+        'sphinx': r.recognize_sphinx
+    }
+
+    transcriber_method = transcriber_dict[transcriber]
+    
     sound = AudioSegment.from_wav(wav_file)  
     chunks = split_on_silence(sound,
         min_silence_len = 500,
@@ -163,7 +171,7 @@ def transcribe(wav_file):
         with sr.AudioFile(chunk_filename) as source:
             audio_listened = r.record(source)
             try:
-                cur_text = r.recognize_sphinx(audio_listened)
+                cur_text = transcriber_method(audio_listened)
             except sr.UnknownValueError as e:
                 print("Error:", str(e))
             else:

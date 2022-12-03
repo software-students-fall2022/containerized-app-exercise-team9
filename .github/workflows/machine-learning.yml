@@ -24,4 +24,4 @@ jobs:
           pip install -e .
       - name: Test with pytest
         run: |
-          python -m pytest machine-learning-client/tests
+          python -m pytest machine-learning-client/web-app/tests

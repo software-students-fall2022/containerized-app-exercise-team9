@@ -9,6 +9,6 @@ def get_random_quote():
 			data = json_data['data']
 			return(data[0]['quoteText'])
 		else:
-			print("Error " + str(response.status_code) +  " while getting quote.")
+			return "When nobody is around, the trees gossip about the people who have walked under them."
 	except:
 		print("Something went wrong.")
