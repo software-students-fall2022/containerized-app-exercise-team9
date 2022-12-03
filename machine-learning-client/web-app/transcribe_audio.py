@@ -3,6 +3,7 @@ import os
 import numpy as np
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
+from datetime import datetime
 
 def generate_statistics(actual_text, wav_file, transcriber='sphinx'):
     """
@@ -43,6 +44,7 @@ def generate_statistics(actual_text, wav_file, transcriber='sphinx'):
     data['total_words_per_second'] = words_spoken / audio_length
     data['correct_words_per_second'] = matches / audio_length
     data['accuracy'] = accuracy_val * 100
+    data['time_created'] = datetime.now()
     return data
 
 def accuracy(actual: list[str], transcribed: list[str], matches: int) -> float:
