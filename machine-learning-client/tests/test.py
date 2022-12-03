@@ -117,3 +117,25 @@ class Tests:
         expected = 0.0
         actual = transcribe.accuracy(text, transcribed, matches)
         assert expected == actual, f"Expected accuracy between {text} and {transcribed} to be {expected}. Instead, it was {actual}."
+    
+    def all_matching_words(self):
+        """
+        """
+        main = ['hello', 'world', 'what', 'a', 'lovely', 'day', 'we', 'are', 'having']
+        secondary = ['hello', 'world', 'what', 'a', 'lovely', 'day', 'we', 'are', 'having']
+        assert transcribe.matching_words(main, secondary) == [len(main), [0, 1, 2, 3, 4, 5, 6, 7, 8]]
+    
+    def some_matching_words(self):
+        """
+        """
+        main = ['hello', 'world', 'what', 'a', 'lovely', 'day', 'we', 'are', 'having']
+        secondary = ['hello', 'world', 'you', 'are', 'lovely']
+        matches = 3
+        assert transcribe.matching_words(main, secondary) == [matches, [0, 1, 4]]
+    
+    def no_matching_words(self):
+        """
+        """
+        main = ['hello', 'world', 'what', 'a', 'lovely', 'day', 'we', 'are', 'having']
+        secondary = ['i', 'am', 'getting', 'bad', 'sleep', 'these', 'days']
+        assert transcribe.matching_words(main, secondary) == [0, []]
