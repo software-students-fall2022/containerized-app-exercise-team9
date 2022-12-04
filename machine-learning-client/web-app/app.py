@@ -16,6 +16,7 @@ def index():
 
 @app.route('/', methods = ['GET', 'POST'])
 def save_file():
+    transcribed_text=''
     if request.method == 'POST':
         text = request.form['text']
         f = request.files['file']
@@ -31,10 +32,11 @@ def save_file():
           Database.initialize()
           print(Database.insert_one("results", transcription_data))
           Database.close()
+          transcribed_text = transcription_data['ouput_text']
         except Exception as e:
           print("Failed to insert data to database: ", e)
         
-    return render_template('index.html', text=text) 
+    return render_template('index.html', text=text, transcribed_text=transcribed_text) 
 
 
 if __name__ == '__main__':
