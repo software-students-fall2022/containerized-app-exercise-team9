@@ -22,9 +22,8 @@ def results_home():
 
 @app.route("/all")
 def display_all():
-  agg = db.results.aggregate([
-    {
-      "$group": {
+
+  group = {"$group": {
         "_id": "null",
         "avg_time_taken": { "$avg": "$time_taken"},
         "avg_accuracy": { "$avg": "$accuracy"},
@@ -32,13 +31,19 @@ def display_all():
         "avg_correct_spoken": { "$avg": "$correct_words_spoken"},
         "avg_total_wps": { "$avg": "$total_words_per_second"},
         "avg_correct_wps": { "$avg": "$correct_words_per_second"},
-      },
     }
-  ])
+  }
 
+  agg = db.results.aggregate([group])
+
+  data = []
   # command cursor to iterable object 
   for doc in agg: 
-    data=doc
+    for prop in doc: 
+      print(prop)
+      if (prop != "_id"):
+        clean = (round(float(doc[prop]),2))
+        data.append(clean)
 
 
   return render_template("all.html", documents = db.results.find({}).sort("_id", -1), data = data, size = db.results.count_documents({}))
