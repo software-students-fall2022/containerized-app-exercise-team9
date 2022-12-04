@@ -12,34 +12,34 @@
 
     <div class="container p-5">
         <h1> Past Transcriber Results </h1>
-        <div class="row text-center text-white p-3 border border-2 rounded bg-primary" style="margin-bottom: 10px;"> 
+        <div class="row text-center text-white border border-2 pt-2 rounded bg-primary" style="margin-bottom: 10px;"> 
             <h3> Average Stats </h3>
             <p class="medium"> <i> Average stats for all past transcriptions (of all users). </i>  </p>
-            <div class="row text-center p-1 border-bottom border-2  mx-auto">
+            <div class="row text-center text-black border-bottom border-1 p-2 bg-light mx-auto">
                 <div class="col"> <b> Number of completed transcriptions </b> </div>
                 <div class="col"> {{size}} transcriptions </div>
             </div>
-            <div class="row text-center p-1 border-bottom border-2  mx-auto">
+            <div class="row text-center text-black border-bottom border-1 p-2 bg-white mx-auto">
                 <div class="col"> <b> Time taken </b> </div>
                 <div class="col"> {{data["avg_time_taken"]}} seconds  </div>
             </div>
-            <div class="row text-center p-1 border-bottom border-2  mx-auto">
+            <div class="row text-center text-black border-bottom border-1 p-2 bg-white mx-auto">
                 <div class="col"> <b> Accuracy </b> </div>
                 <div class="col"> {{data["avg_accuracy"]}} out of 1 </div>
             </div>
-            <div class="row text-center p-1 border-bottom border-2  mx-auto">
+            <div class="row text-center text-black border-bottom border-1 p-2 bg-white mx-auto">
                 <div class="col"> <b> Total words spoken </b>  </div>
                 <div class="col">  {{data["avg_words_spoken"]}} words  </div>
             </div>
-            <div class="row text-center p-1 border-bottom border-2  mx-auto">
+            <div class="row text-center text-black border-bottom border-1 p-2 bg-white mx-auto">
                 <div class="col"> <b> Correct words spoken </b>  </div>
                 <div class="col">  {{data["avg_correct_spoken"]}} words </div>
             </div>
-            <div class="row text-center p-1 border-bottom border-2  mx-auto">
+            <div class="row text-center text-black border-bottom border-1 p-2 bg-white mx-auto">
                 <div class="col"> <b> Total words spoken per second </b>  </div>
                 <div class="col">  {{data["avg_total_wps"]}} words per second </div>
             </div>
-            <div class="row text-center p-1 mx-auto">
+            <div class="row text-center text-black border-bottom border-1 p-2  bg-white mx-auto">
                 <div class="col"> <b> Correct words spoken per second </b>  </div>
                 <div class="col"> {{data["avg_correct_wps"]}} words per second </div>
             </div>
@@ -48,7 +48,7 @@
 
         </div>
         {% for document in documents %}
-        <div class="card" style="width: 40%; display: inline-block;">
+        <div class="card" style="width: 45%; display: inline-block; margin-left: 3%; margin-bottom: 10px;">
             <div class="card-body">
                 <h5 class="card-title">  Result </h5>
                 <p> Completed {{document["time_created"]}}<p>
