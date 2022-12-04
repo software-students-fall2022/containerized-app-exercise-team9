@@ -47,7 +47,7 @@ def generate_statistics(actual_text, wav_file, transcriber='sphinx'):
     data['time_created'] = datetime.now()
     return data
 
-def accuracy(actual: list[str], transcribed: list[str], matches: int) -> float:
+def accuracy(actual, transcribed, matches):
     """
     Returns the accuracy between the actual and transcribed texts
 
