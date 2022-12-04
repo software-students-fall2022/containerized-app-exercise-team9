@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from generate_text import get_random_quote
 from werkzeug.utils import secure_filename
 from transcribe_audio import generate_statistics
+from mongodb import Database
 
 app = Flask(__name__)
 
@@ -26,6 +27,12 @@ def save_file():
 
         transcription_data = generate_statistics(text, file_path, 'google')
         
+        try:
+          Database.initialize()
+          print(Database.insert_one("results", transcription_data))
+          Database.close()
+        except Exception as e:
+          print("Failed to insert data to database: ", e)
         
     return render_template('index.html', text=text) 
 
