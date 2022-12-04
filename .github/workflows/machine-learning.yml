@@ -15,13 +15,14 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-            python -m pip3 install --upgrade pip3
-            pip3 install pytest
-            pip3 install flask
-            if [ -f requirements.txt ]; then pip3 install -r requirements.txt; fi
+            python -m pip install --upgrade pip
+            pip install pytest
+            pip install flask
+            pip install numpy
+            if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Turn on 'editable' mode
         run: |
-          pip3 install -e ./machine-learning-client
+          pip install -e ./machine-learning-client
       - name: Test with pytest
         run: |
           python -m pytest machine-learning-client/web-app/tests
