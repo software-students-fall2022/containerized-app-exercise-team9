@@ -4,6 +4,7 @@ import numpy as np
 from transcribe_audio import matching_words
 
 class Tests:
+
     def sanity_check(self):
         """
         Throwaway test.
@@ -27,7 +28,7 @@ class Tests:
         assert expected_num == actual_num, f"Expected number of matching words between {main} and {secondary} to be {expected_num}. Instead it was {actual_num}."
         assert expected_arr == actual_arr, f"Expected indeces of matching words between {main} and {secondary} to be {expected_arr}. Instead it was {actual_arr}."
 
-    def test_all_matching(self):
+    def test_matching_with_noise(self):
         """
         Test matching_words with noise, should return all matching
         """
@@ -42,8 +43,7 @@ class Tests:
         assert expected_num == actual_num, f"Expected number of matching words between {main} and {secondary} to be {expected_num}. Instead it was {actual_num}."
         assert expected_arr == actual_arr, f"Expected indeces of matching words between {main} and {secondary} to be {expected_arr}. Instead it was {actual_arr}."
     
-
-    def test_all_matching(self):
+    def test_matching_wrong_spot(self):
         """
         Test matching_words with one element in the wrong spot, should return all except one matching
         """
@@ -58,8 +58,7 @@ class Tests:
         assert expected_num == actual_num, f"Expected number of matching words between {main} and {secondary} to be {expected_num}. Instead it was {actual_num}."
         assert expected_arr == actual_arr, f"Expected indeces of matching words between {main} and {secondary} to be {expected_arr}. Instead it was {actual_arr}."    
     
-
-    def test_all_matching(self):
+    def test_matching_missing_elements(self):
         """
         Test matching_words with elements missing, should return correct indeces
         """
@@ -74,7 +73,7 @@ class Tests:
         assert expected_num == actual_num, f"Expected number of matching words between {main} and {secondary} to be {expected_num}. Instead it was {actual_num}."
         assert expected_arr == actual_arr, f"Expected indeces of matching words between {main} and {secondary} to be {expected_arr}. Instead it was {actual_arr}."   
 
-    def test_all_matching(self):
+    def test_matching_duplicate_elements(self):
         """
         Test matching_words with duplicate elements
         """
