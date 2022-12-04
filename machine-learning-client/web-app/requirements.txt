@@ -10,6 +10,7 @@ MarkupSafe==2.1.1
 numpy==1.23.3
 pymongo==4.2.0
 python-dotenv==0.21.0
+SpeechRecognition==3.8.1
 Werkzeug==2.2.2
 zipp==3.9.0
 wave==0.0.2
