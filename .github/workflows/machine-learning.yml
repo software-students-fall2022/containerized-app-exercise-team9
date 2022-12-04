@@ -21,7 +21,7 @@ jobs:
             if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Turn on 'editable' mode
         run: |
-          pip install -e .
+          pip install -e ./machine-learning-client
       - name: Test with pytest
         run: |
           python -m pytest machine-learning-client/web-app/tests
