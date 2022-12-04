@@ -2,8 +2,10 @@ import pytest
 import sys
 import numpy as np
 import transcribe_audio as transcribe
+import os
 
 class Tests:
+    
     def sanity_check(self):
         """
         Throwaway test.
@@ -23,14 +25,14 @@ class Tests:
         """
         Testing if correctly transcribes short audio
         """
-        transcribed, _ = transcribe.transcribe("tests/test_short.wav")
+        transcribed, _ = transcribe.transcribe(os.path.dirname(__file__) + "/test_short.wav")
         assert transcribed == "Hello world.", f"Expected transcription to return 'Hello world.' instead it returned {transcribed}"
 
     def test_generate_statistics(self):
         """
         Testing if correctly generates mongodb data from short audio
         """
-        data = transcribe.generate_statistics("Hello world.", "tests/test_short.wav")
+        data = transcribe.generate_statistics("Hello world.", os.path.dirname(__file__) + "/test_short.wav")
 
         assert data['screen_text'] == "Hello world.", f"Expected screen_text to be 'Hello world.', instead it was '{data['screen_text']}'"
 
@@ -52,7 +54,7 @@ class Tests:
         """
         Testing if correctly gets audio length
         """
-        _, audio_length = transcribe.transcribe("tests/test_short.wav")
+        _, audio_length = transcribe.transcribe(os.path.dirname(__file__) + "/test_short.wav")
         assert audio_length >= 1 and audio_length <= 1.5, f"Error, expected audio length to be between 64 and 65, instead it was {audio_length}"
 
     def test_sentence_to_word_list(self):
