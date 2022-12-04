@@ -12,38 +12,42 @@
     <div class="container p-5">
         <h1> Transcriber Results </h1>
         <div class="row text-center p-3">
-            <p class = "fw-bold"> Transcribed text: </p> 
-            <p class="fst-normal"> {{result["screen_text"]}}</p>
+            <p class = "fw-bold"> Randomly generated text: </p> 
+            <p class="fst-normal"> {{result[1]}}</p>
+
+            <p class = "fw-bold"> What was said by the user:  </p> 
+            <p class="fst-normal"> {{result[2]}}</p>
         </div> 
         <div class="row text-center p-2 border border-2 rounded"> 
             <div class="col"> <p class="fw-bold"> Time taken </p> 
             <p class="small"> <i> The total amount of time taken to complete reading the text out loud. </i>  </p></div>
-            <div class="col"> <p class="fst-normal"> {{result["time_taken"]}} seconds</p> </div>
+            <div class="col"> <p class="fst-normal"> {{result[3]}} seconds</p> </div>
         </div> 
         <div class="row text-center p-2 border border-2 rounded" style="margin-top: 10px;">
             <div class="col"> <p class="fw-bold"> Accuracy </p> 
             <p class="small"> <i> The fraction of the text that was said (or read) correctly. </i>  </p></div>
-            <div class="col"> <p class="fst-normal"> {{result["accuracy"]}} out of 1 </p> </div>
+            <div class="col"> <p class="fst-normal"> {{result[8]}}%</p> 
+            </div>
         </div> 
         <div class="row text-center p-2 border border-2 rounded" style="margin-top: 10px;">
             <div class="col"> <p class="fw-bold"> # of total words spoken </p> 
             <p class="small"> <i> The total number of words said (or read). Counts both correct and incorrect words.   </i>  </p></div>
-            <div class="col"> <p class="fst-normal"> {{result["words_spoken"]}} total words </p> </div>
+            <div class="col"> <p class="fst-normal"> {{result[4]}} total words </p> </div>
         </div> 
         <div class="row text-center p-2 border border-2 rounded" style="margin-top: 10px;">
             <div class="col"> <p class="fw-bold"> # of correct words spoken </p> 
                 <p class="small"> <i> The number of <b> only</b> correct words said (or read).  </i>  </p></div>
-            <div class="col"> <p class="fst-normal">  {{result["correct_words_spoken"]}} correct words</p> </div>
+            <div class="col"> <p class="fst-normal">  {{result[5]}} correct words</p> </div>
         </div> 
         <div class="row text-center p-2 border border-2 rounded" style="margin-top: 10px;">
             <div class="col"> <p class="fw-bold"> Words per second </p> 
                 <p class="small"> <i> Average number of words said (or read) per second. Counts both correct and incorrect words. </i>  </p></div>
-            <div class="col"> <p class="fst-normal"> {{result["total_words_per_second"]}} total words per second </p> </div>
+            <div class="col"> <p class="fst-normal"> {{result[6]}} total words per second </p> </div>
         </div> 
         <div class="row text-center p-2 border border-2 rounded" style="margin-top: 10px; margin-bottom: 20px;">
             <div class="col"> <p class="fw-bold"> Correct words per second </p> 
                 <p class="small"> <i> Average number of <b> only</b> correct words said (or read) per second.  </i>  </p></div>
-            <div class="col"> <p class="fst-normal"> {{result["correct_words_per_second"]}} correct words per second </p> </div>
+            <div class="col"> <p class="fst-normal"> {{result[7]}} correct words per second </p> </div>
         </div> 
     
         <div class="row mx-auto">

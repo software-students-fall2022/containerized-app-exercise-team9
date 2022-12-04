@@ -15,17 +15,34 @@ db = client["textToSpeech"]
 
 @app.route("/") 
 def results_home(): 
-  ## not the right way to find the last result, just a test
-  result = db.results.find({}).sort("_id",-1).limit(1)
-  print(result[0])
-  return render_template("result.html", result=result[0])
+  result = db.results.find({}).sort("_id", -1).limit(1)
+  data = []
+
+  misc = ["screen_text", "ouput_text", "_id", "time_created"]
+
+  for ele in result: 
+    for prop in ele: 
+      if (prop in misc):
+        string = ele[prop]
+        data.append(string)
+      else:
+        num = (round(float(ele[prop]),2))
+        data.append(num)
+
+  idx = 0
+  for point in data:
+    print(idx, ": ", point)
+    print()
+    idx = idx+1
+
+
+  return render_template("result.html", result=data)
 
 
 @app.route("/all")
 def display_all():
-  agg = db.results.aggregate([
-    {
-      "$group": {
+
+  group = {"$group": {
         "_id": "null",
         "avg_time_taken": { "$avg": "$time_taken"},
         "avg_accuracy": { "$avg": "$accuracy"},
@@ -33,24 +50,49 @@ def display_all():
         "avg_correct_spoken": { "$avg": "$correct_words_spoken"},
         "avg_total_wps": { "$avg": "$total_words_per_second"},
         "avg_correct_wps": { "$avg": "$correct_words_per_second"},
-      }
     }
-  ])
+  }
 
+  agg = db.results.aggregate([group])
+
+  data = []
   # command cursor to iterable object 
-  # definitely a better way to do this
   for doc in agg: 
-    data=doc
+    for prop in doc: 
+      if (prop != "_id"):
+        clean = (round(float(doc[prop]),2))
+        data.append(clean)
 
 
-  return render_template("all.html", documents = db.results.find({}), data = data, size = db.results.count_documents({}))
+  return render_template("all.html", documents = db.results.find({}).sort("_id", -1), data = data, size = db.results.count_documents({}))
 
 @app.route("/view/<id>")
 def view_details(id):
   findId = ObjectId(id)
-  info = db.results.find_one({"_id": findId})
-  print(info)
-  return render_template("result.html", result=info)
+  result = db.results.find_one({"_id": findId})
+  
+  result = db.results.find({}).sort("_id", -1).limit(1)
+  data = []
+
+  misc = ["screen_text", "ouput_text", "_id", "time_created"]
+
+  for ele in result: 
+    for prop in ele: 
+      if (prop in misc):
+        string = ele[prop]
+        data.append(string)
+      else:
+        num = (round(float(ele[prop]),2))
+        data.append(num)
+
+  idx = 0
+  for point in data:
+    print(idx, ": ", point)
+    print()
+    idx = idx+1
+
+
+  return render_template("result.html", result=data)
 
 
 
