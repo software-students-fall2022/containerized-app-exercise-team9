@@ -1,6 +1,4 @@
 import pytest
-import sys
-import numpy as np
 from transcribe_audio import matching_words
 
 class Tests:
