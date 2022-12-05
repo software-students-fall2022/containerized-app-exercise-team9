@@ -45,20 +45,18 @@ def display_all():
 def view_details(id):
   findId = ObjectId(id)
   result = db.results.find_one({"_id": findId})
-  
-  result = db.results.find({}).sort("_id", -1).limit(1)
+
   data = []
 
   misc = ["screen_text", "ouput_text", "_id", "time_created"]
 
-  for ele in result: 
-    for prop in ele: 
-      if (prop in misc):
-        string = ele[prop]
-        data.append(string)
-      else:
-        num = (round(float(ele[prop]),2))
-        data.append(num)
+  for prop in result: 
+    if (prop in misc):
+      string = result[prop]
+      data.append(string)
+    else:
+      num = (round(float(result[prop]),2))
+      data.append(num)
 
   idx = 0
   for point in data:
