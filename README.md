@@ -1,5 +1,5 @@
 ![Machine Learning build & test](https://github.com/software-students-fall2022/containerized-app-exercise-team9/actions/workflows/machine-learning.yml/badge.svg)
-![Machine Learning build & test](https://github.com/software-students-fall2022/containerized-app-exercise-team9/actions/workflows/web-app.yml/badge.svg)
+![Web App build & test](https://github.com/software-students-fall2022/containerized-app-exercise-team9/actions/workflows/web-app.yml/badge.svg)
 
 ## Team members
 Pedro Baggio ([Jignifs](https://github.com/Jignifs))
