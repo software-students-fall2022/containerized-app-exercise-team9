@@ -8,6 +8,7 @@ import os
 load_dotenv()
 MONGO = os.getenv('MONGODB_CONNSTRING')
 client = MongoClient(MONGO)
+from handler import handle
 
 
 app = Flask(__name__)
