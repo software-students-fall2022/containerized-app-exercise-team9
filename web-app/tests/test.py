@@ -1,8 +1,8 @@
 
 import pytest
-from app import app
 import datetime
-from ..webapp/app import handler()
+
+
 test_doc = {'_id': '638bee05648e1b03651f707a', 
 'screen_text': 'When nobody is around, the trees gossip about the people who have walked under them.', 
 'ouput_text': "When nobody's around the trees gossip about the people who have walked into.", 'time_taken': 4.622, 
