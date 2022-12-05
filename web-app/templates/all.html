@@ -54,11 +54,7 @@
                 <h5 class="card-title">  Result </h5>
                 <p> Completed {{document["time_created"]}}<p>
                 <p class="small"> 
-                    Accuracy: {{document["accuracy"]}} out of 1
-                    <br>
-                    Time: {{document["time_taken"]}} seconds 
-                    <br>
-                    Total words per second: {{document["total_words_per_second"]}}
+                    Accuracy: {{document["accuracy"]}}%
                 </p>
                 <a href= "view/{{document._id}}" class="btn btn-outline-primary"> More details </a>
             </div>
