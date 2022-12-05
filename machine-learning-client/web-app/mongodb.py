@@ -1,12 +1,14 @@
 from pymongo import MongoClient
 from bson.json_util import dumps, loads
-from dotenv import dotenv_values
+from dotenv import load_dotenv
+
+import os
 
 
 class Database(object):
 
-    config = dotenv_values(".env")
-    url = config["MONGO_URI"]
+    load_dotenv()
+    url = os.getenv('MONGODB_CONNSTRING')
     database=None
     client=None
     

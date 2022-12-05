@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from generate_text import get_random_quote
-from werkzeug.utils import secure_filename
 from transcribe_audio import generate_statistics
 from mongodb import Database
 
@@ -20,13 +19,8 @@ def save_file():
     if request.method == 'POST':
         text = request.form['text']
         f = request.files['file']
-        filename = secure_filename(f.filename)
 
-        file_path = app.config['UPLOAD_FOLDER'] + filename
-
-        f.save(file_path)
-
-        transcription_data = generate_statistics(text, file_path, 'google')
+        transcription_data = generate_statistics(text, f, 'google')
         
         try:
           Database.initialize()

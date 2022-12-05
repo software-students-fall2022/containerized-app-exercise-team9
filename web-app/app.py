@@ -6,40 +6,14 @@ from bson import ObjectId
 import os
 
 load_dotenv()
-MONGO = os.getenv('MONGO_REMOTE')
+MONGO = os.getenv('MONGODB_CONNSTRING')
 client = MongoClient(MONGO)
 
 
 app = Flask(__name__)
 db = client["textToSpeech"]
 
-@app.route("/") 
-def results_home(): 
-  result = db.results.find({}).sort("_id", -1).limit(1)
-  data = []
-
-  misc = ["screen_text", "ouput_text", "_id", "time_created"]
-
-  for ele in result: 
-    for prop in ele: 
-      if (prop in misc):
-        string = ele[prop]
-        data.append(string)
-      else:
-        num = (round(float(ele[prop]),2))
-        data.append(num)
-
-  idx = 0
-  for point in data:
-    print(idx, ": ", point)
-    print()
-    idx = idx+1
-
-
-  return render_template("result.html", result=data)
-
-
-@app.route("/all")
+@app.route("/")
 def display_all():
 
   group = {"$group": {
