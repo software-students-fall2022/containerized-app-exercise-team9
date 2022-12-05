@@ -21,6 +21,7 @@ def save_file():
         f = request.files['file']
 
         transcription_data = generate_statistics(text, f, 'google')
+        transcription_data['name'] = request.form['name']
         
         try:
           Database.initialize()
