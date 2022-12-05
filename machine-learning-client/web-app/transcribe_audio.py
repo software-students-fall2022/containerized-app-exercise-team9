@@ -35,14 +35,20 @@ def generate_statistics(actual_text, wav_file, transcriber='sphinx'):
     accuracy_val = accuracy(actual_list, transcribed_list, matches)
     words_spoken = len(transcribed_list)
 
+    total_words_per_second = 0
+    correct_words_per_second = 0
+    if audio_length > 0:
+        total_words_per_second = words_spoken / audio_length
+        correct_words_per_second = matches / audio_length
+
     data = {}
     data['screen_text'] = actual_text
     data['ouput_text'] = transcribed_text
     data['time_taken'] = audio_length
     data['words_spoken'] = words_spoken
     data['correct_words_spoken'] = matches
-    data['total_words_per_second'] = words_spoken / audio_length
-    data['correct_words_per_second'] = matches / audio_length
+    data['total_words_per_second'] = total_words_per_second
+    data['correct_words_per_second'] = correct_words_per_second
     data['accuracy'] = accuracy_val * 100
     data['time_created'] = datetime.now()
     return data
