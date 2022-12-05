@@ -1,12 +1,15 @@
 def handle(doc):
-  data = []
-  misc = ["screen_text", "ouput_text", "_id", "time_created"]
-  for prop in doc: 
-      if (prop in misc):
-        string = doc[prop]
-        data.append(string)
-      else:
-        num = (round(float(doc[prop]),2))
-        data.append(num)
+    data = []
+    misc = ["screen_text", "ouput_text", "_id", "time_created"]
+    for prop in doc: 
+        if (prop in misc):
+            string = doc[prop]
+            data.append(string)
+        else:
+            num = (round(float(doc[prop]),2))
+            data.append(num)
 
-  return data
+
+    print(type(data[1]) == str)
+
+    return data

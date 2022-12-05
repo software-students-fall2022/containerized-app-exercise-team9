@@ -22,6 +22,7 @@ def results_home():
 
   data = handle(result[0])
 
+  print(data)
   return render_template("result.html", result=data)
 
 
