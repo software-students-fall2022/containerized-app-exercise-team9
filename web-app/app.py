@@ -29,6 +29,7 @@ def display_all():
   }
 
   agg = db.results.aggregate([group])
+  name = ""
 
   data = []
   # command cursor to iterable object 
@@ -48,7 +49,8 @@ def view_details(id):
 
   data = []
 
-  misc = ["screen_text", "ouput_text", "_id", "time_created"]
+  misc = ["screen_text", "ouput_text", "_id", "time_created", "name"]
+  name = ""
 
   for prop in result: 
     if (prop in misc):
@@ -57,6 +59,8 @@ def view_details(id):
     else:
       num = (round(float(result[prop]),2))
       data.append(num)
+    if prop == 'name':
+      name = result[prop]
 
   idx = 0
   for point in data:
@@ -65,7 +69,7 @@ def view_details(id):
     idx = idx+1
 
 
-  return render_template("result.html", result=data)
+  return render_template("result.html", result=data, name=name)
 
 
 
