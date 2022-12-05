@@ -7,34 +7,67 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <title>Online transcriber</title>
+  <style>
+    body {
+      background-color: #57068c;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      width: 70%;
+      margin: 5em;
+      background-color: white;
+      padding: 2em;
+    }
+    .quote {
+      background-color: lightgrey;
+      padding: 1em;
+      border-radius: 20px;
+      box-shadow: 0 6px 6px rgba(0,0,0,0.2);;
+      font-style: italic;
+      text-align: center;
+      margin: 10px 0;
+    }
+    .app {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .title {
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>Machine learning</h1>
+    <h1 class="title">Machine learning</h1>
     <div class="mb-3">
       <label for="name" class="form-label">Enter your name:</label>
       <input type="name" class="form-control" id="name" >
     </div>
     <div class="mb-3">
 			<label for="quote" class="form-label">Your quote:</label>
-			<p>{{ text }}</p>
+			<p class="quote">{{ text }}</p>
     </div>
 		<div class="app">
-      <select name="" id="micSelect"></select>
-    
-      <select id="visSelect">
+      <p>Select your microphone and make sure to give permission in your browser:</p>
+      <select class="form-select" name="" id="micSelect"></select>
+
+      <select class="form-select m-2" size="3" id="visSelect">
         <option value="frequencybars">Bar</option>
         <option value="sinewave">Wave</option>
         <option value="circle">Circle</option>
       </select>
     
-      <a id="download" >Download</a>
-    
-      <div class="audio-controls">
-        <button id="record">Record</button>
-        <button id="stop">Stop</button>
+      <div class="audio-controls d-flex ">
+        <button class="btn btn-dark" id="record">Record</button>
+        <button class="btn btn-danger" id="stop">Stop</button>
         <audio id="audio" controls></audio>
       </div>
+
+      <a class="btn btn-primary m-3" id="download" >Download</a>
+
     
       <div id="msg">Recording...</div>
       <canvas width="500" height="300"></canvas>
@@ -42,11 +75,11 @@
 
       <form action = "/" method = "POST" 
          enctype = "multipart/form-data">
-         <input type = "file" name = "file" />
+         <input class="form-control m-2" type = "file" name = "file" />
          <input type = "hidden" id="text" name="text" value="{{ text }}"/>
          <br><br>
-         <input type = "submit"/>
-         <input type = "reset"/>
+         <input class="btn btn-primary" type = "submit"/>
+         <input class="btn btn-danger" type = "reset"/>
       </form>
       {% if transcribed_text %}
       <div class="mb-3">
